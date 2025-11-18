@@ -3,14 +3,15 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 .utmp/
-/Library/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+/midnight_feast/Library/
+/midnight_feast/[Tt]emp/
+/midnight_feast/[Oo]bj/
+/midnight_feast/[Bb]uild/
+/midnight_feast/[Bb]uilds/
+/midnight_feast/[Ll]ogs/
+/midnight_feast/[Uu]ser[Ss]ettings/
 *.log
+*.vscode
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
 *.blend1
@@ -97,3 +98,4 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
