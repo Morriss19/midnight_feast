@@ -1,33 +1,44 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Player_Movment : MonoBehaviour
+public class Player_Movement : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed = 5f;
 
-    private float xMovement;
-    private float yMovement;
-    private float speed; 
-    bool isFacingLeft;
-    bool isFacingRight;
-    bool isFacingUp;
-    bool isfacingDown;
+    private Vector2 movement;
+    private Rigidbody2D _rb;
+    private Animator animator;
 
-    [SerializedField] private RigidBody2D rb ;
+    private const string _xAxis = "Horizontal";
+    private const string _yAxis = "Vertical";
+    private const string _LastXAxis = "LastHorizontal";
+    private const string _LastYAxis = "LastVertical";
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        xMove = Input.getAxisRaw("xMovement"); 
+        movement.Set(InputManager.movement.x, InputManager.movement.y);
 
+        // Set animator parameters for current movement
+        animator.SetFloat(_xAxis, movement.x);
+        animator.SetFloat(_yAxis, movement.y);
+
+        // Update last direction when moving
+        if (movement != Vector2.zero)
+        {
+            animator.SetFloat(_LastXAxis, movement.x);
+            animator.SetFloat(_LastYAxis, movement.y);
+        }
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(xMovement * speed, rb.velocity.y); 
+        // Move the rigidbody
+        _rb.linearVelocity = movement * moveSpeed;
     }
 }
