@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 50edafe66ae6aa240880925cad9ae6ff
+=======
+guid: 473afcc326e07e74bb98a19ed5ada784
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -138,7 +142,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -160,7 +168,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -182,7 +194,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -204,7 +220,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -226,7 +246,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -248,7 +272,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -270,7 +298,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -292,7 +324,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -314,7 +350,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -336,7 +376,11 @@ TextureImporter:
         width: 20
         height: 29
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -358,7 +402,11 @@ TextureImporter:
         width: 25
         height: 20
       alignment: 0
+<<<<<<< HEAD
       pivot: {x: 0, y: 0}
+=======
+      pivot: {x: 0.5, y: 0.5}
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -375,7 +423,11 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< HEAD
     spriteID: 
+=======
+    spriteID: fb941697ab310b54d8f0f3bfe4f10145
+>>>>>>> 86513185538af0b4d4ea6c5b73bcfe633ffc0e83
     internalID: 0
     vertices: []
     indices: 
