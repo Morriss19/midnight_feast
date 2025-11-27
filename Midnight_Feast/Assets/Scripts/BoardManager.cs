@@ -10,16 +10,23 @@ public class BoardManager : MonoBehaviour
 
     private CellData[,] m_BoardData;
     private Tilemap m_Tilemap;
+    private Grid m_Grid;
 
     public int Width;
     public int Height;
     public Tile[] GroundTiles;
     public Tile[] WallTiles;
+    public PlayerController Player;
+    public Vector3 CellToWorld(Vector2Int cellIndex)
+    {
+        return m_Grid.GetCellCenterWorld((Vector3Int)cellIndex);
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_Tilemap = GetComponentInChildren<Tilemap>();
+        m_Grid = GetComponentInChildren<Grid>();
 
         m_BoardData = new CellData[Width, Height];
 
@@ -44,8 +51,11 @@ public class BoardManager : MonoBehaviour
                 m_Tilemap.SetTile(new Vector3Int(x, y, 0), tile);
             }
         }
+
+        Player.Spawn(this, new Vector2Int(1, 1));
     }
 
+    
     // Update is called once per frame
     void Update()
     {
