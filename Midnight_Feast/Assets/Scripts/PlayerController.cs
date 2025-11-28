@@ -1,14 +1,18 @@
- using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Camera mainCamera;
     
     private BoardManager m_Board;
     private Vector2Int m_CellPosition;
     private Vector3 m_TargetPosition;
     private bool m_IsMoving = false;
+    
+    private Vector2 minBounds;
+    private Vector2 maxBounds;
     
     public void Spawn(BoardManager boardManager, Vector2Int cell)
     {
@@ -16,12 +20,37 @@ public class PlayerController : MonoBehaviour
         m_CellPosition = cell;
         m_TargetPosition = m_Board.CellToWorld(cell);
         transform.position = m_TargetPosition;
+        
+        // Get camera if not assigned
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
+        
+        // Calculate camera bounds
+        CalculateCameraBounds();
+    }
+    
+    private void CalculateCameraBounds()
+    {
+        if (mainCamera == null) return;
+        
+        float cameraHeight = mainCamera.orthographicSize * 2f;
+        float cameraWidth = cameraHeight * mainCamera.aspect;
+        
+        Vector3 cameraPos = mainCamera.transform.position;
+        
+        minBounds = new Vector2(cameraPos.x - cameraWidth / 2f, cameraPos.y - cameraHeight / 2f);
+        maxBounds = new Vector2(cameraPos.x + cameraWidth / 2f, cameraPos.y + cameraHeight / 2f);
     }
 
     void Update()
     {
         // Don't do anything if not spawned yet
         if (m_Board == null) return;
+
+        // Update camera bounds every frame (in case camera moves)
+        CalculateCameraBounds();
 
         if (m_IsMoving)
         {
@@ -67,10 +96,17 @@ public class PlayerController : MonoBehaviour
     {
         Vector2Int targetCell = m_CellPosition + direction;
 
-        // Move to the target cell (add validation later if needed)
-        m_CellPosition = targetCell;
-        m_TargetPosition = m_Board.CellToWorld(targetCell);
-        m_IsMoving = true;
+        // Check if the target cell is passable
+        if (m_Board.IsCellPassable(targetCell))
+        {
+            m_CellPosition = targetCell;
+            m_TargetPosition = m_Board.CellToWorld(targetCell);
+            m_IsMoving = true;
+        }
+        else
+        {
+            Debug.Log("Can't move through walls!");
+        }
     }
 
     private void MoveTowardsTarget()
