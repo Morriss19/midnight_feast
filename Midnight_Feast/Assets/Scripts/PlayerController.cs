@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
         // Don't do anything if not spawned yet
         if (m_Board == null) return;
 
+        // Update camera bounds every frame (in case camera moves)
+        CalculateCameraBounds();
+
         if (m_IsMoving)
         {
             MoveTowardsTarget();
