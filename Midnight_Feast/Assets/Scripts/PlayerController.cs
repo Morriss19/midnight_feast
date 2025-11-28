@@ -95,25 +95,18 @@ public class PlayerController : MonoBehaviour
     private void TryMove(Vector2Int direction)
     {
         Vector2Int targetCell = m_CellPosition + direction;
-        Vector3 targetWorldPos = m_Board.CellToWorld(targetCell);
 
-        // Check if target position is within camera bounds
-        if (IsWithinCameraBounds(targetWorldPos))
+        // Check if the target cell is passable
+        if (m_Board.IsCellPassable(targetCell))
         {
             m_CellPosition = targetCell;
-            m_TargetPosition = targetWorldPos;
+            m_TargetPosition = m_Board.CellToWorld(targetCell);
             m_IsMoving = true;
         }
         else
         {
-            Debug.Log("Can't move outside camera bounds!");
+            Debug.Log("Can't move through walls!");
         }
-    }
-    
-    private bool IsWithinCameraBounds(Vector3 position)
-    {
-        return position.x >= minBounds.x && position.x <= maxBounds.x &&
-               position.y >= minBounds.y && position.y <= maxBounds.y;
     }
 
     private void MoveTowardsTarget()
