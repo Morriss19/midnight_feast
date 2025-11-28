@@ -22,7 +22,7 @@ public class Player_Movement : MonoBehaviour
 
     private void Update()
     {
-        movement.Set(InputManager.movement.x, InputManager.movement.y);
+        movement = InputManager.Movement;
 
         // Set animator parameters for current movement
         animator.SetFloat(_xAxis, movement.x);
@@ -39,6 +39,6 @@ public class Player_Movement : MonoBehaviour
     private void FixedUpdate()
     {
         // Move the rigidbody
-        _rb.linearVelocity = movement * moveSpeed;
+        _rb.velocity = movement * moveSpeed;
     }
 }
