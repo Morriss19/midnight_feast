@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -22,7 +21,9 @@ public class Player_Movement : MonoBehaviour
 
     private void Update()
     {
-        movement = InputManager.Movement;
+        // Read input directly using Input class
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for current movement
         animator.SetFloat(_xAxis, movement.x);
@@ -39,6 +40,6 @@ public class Player_Movement : MonoBehaviour
     private void FixedUpdate()
     {
         // Move the rigidbody
-        _rb.linearVelocity = movement * moveSpeed;
+        _rb.velocity = movement * moveSpeed;
     }
 }
