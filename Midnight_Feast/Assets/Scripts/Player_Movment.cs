@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -22,7 +21,9 @@ public class Player_Movement : MonoBehaviour
 
     private void Update()
     {
-        movement.Set(InputManager.movement.x, InputManager.movement.y);
+        // Read input directly using Input class
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         // Set animator parameters for current movement
         animator.SetFloat(_xAxis, movement.x);
