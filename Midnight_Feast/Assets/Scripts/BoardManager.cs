@@ -17,11 +17,22 @@ public class BoardManager : MonoBehaviour
     public Tile[] GroundTiles;
     public Tile[] WallTiles;
     public PlayerController Player;
+    
     public Vector3 CellToWorld(Vector2Int cellIndex)
     {
         return m_Grid.GetCellCenterWorld((Vector3Int)cellIndex);
     }
+    public bool IsCellPassable(Vector2Int cellIndex)
+{
+    // Check if cell is within bounds
+    if (cellIndex.x < 0 || cellIndex.x >= Width || cellIndex.y < 0 || cellIndex.y >= Height)
+    {
+        return false;
+    }
     
+    // Check if cell is passable
+    return m_BoardData[cellIndex.x, cellIndex.y].Passable;
+}
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
