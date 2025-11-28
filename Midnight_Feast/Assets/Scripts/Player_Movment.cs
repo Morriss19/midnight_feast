@@ -39,6 +39,6 @@ public class Player_Movement : MonoBehaviour
     private void FixedUpdate()
     {
         // Move the rigidbody
-        _rb.velocity = movement * moveSpeed;
+        _rb.linearVelocity = movement * moveSpeed;
     }
 }
