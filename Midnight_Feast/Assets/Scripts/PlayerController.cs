@@ -1,14 +1,18 @@
- using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Camera mainCamera;
     
     private BoardManager m_Board;
     private Vector2Int m_CellPosition;
     private Vector3 m_TargetPosition;
     private bool m_IsMoving = false;
+    
+    private Vector2 minBounds;
+    private Vector2 maxBounds;
     
     public void Spawn(BoardManager boardManager, Vector2Int cell)
     {
@@ -16,6 +20,28 @@ public class PlayerController : MonoBehaviour
         m_CellPosition = cell;
         m_TargetPosition = m_Board.CellToWorld(cell);
         transform.position = m_TargetPosition;
+        
+        // Get camera if not assigned
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
+        
+        // Calculate camera bounds
+        CalculateCameraBounds();
+    }
+    
+    private void CalculateCameraBounds()
+    {
+        if (mainCamera == null) return;
+        
+        float cameraHeight = mainCamera.orthographicSize * 2f;
+        float cameraWidth = cameraHeight * mainCamera.aspect;
+        
+        Vector3 cameraPos = mainCamera.transform.position;
+        
+        minBounds = new Vector2(cameraPos.x - cameraWidth / 2f, cameraPos.y - cameraHeight / 2f);
+        maxBounds = new Vector2(cameraPos.x + cameraWidth / 2f, cameraPos.y + cameraHeight / 2f);
     }
 
     void Update()
@@ -66,11 +92,25 @@ public class PlayerController : MonoBehaviour
     private void TryMove(Vector2Int direction)
     {
         Vector2Int targetCell = m_CellPosition + direction;
+        Vector3 targetWorldPos = m_Board.CellToWorld(targetCell);
 
-        // Move to the target cell (add validation later if needed)
-        m_CellPosition = targetCell;
-        m_TargetPosition = m_Board.CellToWorld(targetCell);
-        m_IsMoving = true;
+        // Check if target position is within camera bounds
+        if (IsWithinCameraBounds(targetWorldPos))
+        {
+            m_CellPosition = targetCell;
+            m_TargetPosition = targetWorldPos;
+            m_IsMoving = true;
+        }
+        else
+        {
+            Debug.Log("Can't move outside camera bounds!");
+        }
+    }
+    
+    private bool IsWithinCameraBounds(Vector3 position)
+    {
+        return position.x >= minBounds.x && position.x <= maxBounds.x &&
+               position.y >= minBounds.y && position.y <= maxBounds.y;
     }
 
     private void MoveTowardsTarget()
