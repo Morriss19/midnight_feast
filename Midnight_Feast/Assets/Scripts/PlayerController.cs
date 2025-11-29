@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         m_CellPosition = cell;
         m_TargetPosition = m_Board.CellToWorld(cell);
         transform.position = m_TargetPosition;
-        
+
         // Get camera if not assigned
         if (mainCamera == null)
         {
@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
         if (m_IsMoving)
         {   
-            GameManager.Instance.turnManager.Tick();
             MoveTowardsTarget();
         }
         else
@@ -119,6 +118,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = m_TargetPosition;
             m_IsMoving = false;
+
+            GameManager.Instance.turnManager.Tick();
         }
     }
 
