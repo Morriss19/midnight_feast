@@ -53,7 +53,8 @@ public class PlayerController : MonoBehaviour
         CalculateCameraBounds();
 
         if (m_IsMoving)
-        {
+        {   
+            GameManager.Instance.turnManager.Tick();
             MoveTowardsTarget();
         }
         else

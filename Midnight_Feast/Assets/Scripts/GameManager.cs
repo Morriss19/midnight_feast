@@ -2,19 +2,32 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance {get; private set;}
     [SerializeField] public BoardManager boardManager;
     [SerializeField] public PlayerController playerController;
 
-    [SerializeField] private TurnManager m_TurnManager;
-    [SerializeField] private Vector2Int playerStartCell = new Vector2Int(0, 0);
+    [SerializeField] public TurnManager turnManager {get; private set;}
+    [SerializeField] private Vector2Int playerStartCell = new Vector2Int(1, 1);
 
+    private void Awake()
+   {
+       if (Instance != null)
+       {
+           Destroy(gameObject);
+           return;
+       }
+      
+       Instance = this;
+   }
     void Start()
     {
         Debug.Log("GameManager Start() called");
         
         if (playerController != null && boardManager != null)
         {   
-            m_TurnManager = new TurnManager();
+            turnManager = new TurnManager();
+
+            boardManager.Init();
 
             Debug.Log("Spawning player at " + playerStartCell);
             playerController.Spawn(boardManager, playerStartCell);
