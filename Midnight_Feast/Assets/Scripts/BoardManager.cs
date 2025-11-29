@@ -34,7 +34,7 @@ public class BoardManager : MonoBehaviour
     return m_BoardData[cellIndex.x, cellIndex.y].Passable;
 }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Init()
     {
         m_Tilemap = GetComponentInChildren<Tilemap>();
         m_Grid = GetComponentInChildren<Grid>();
