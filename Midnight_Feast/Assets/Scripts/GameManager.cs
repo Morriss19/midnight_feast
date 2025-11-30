@@ -1,18 +1,21 @@
 using UnityEngine;
-
+using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
     [SerializeField] public BoardManager boardManager;
     [SerializeField] public PlayerController playerController;
 
+    [SerializeField] private UIDocument uiDocument;
     [SerializeField] public TurnManager turnManager {get; private set;}
     [SerializeField] private Vector2Int playerStartCell = new Vector2Int(1, 1);
 
-    [SerializeField] private int m_Health = 200;
-
-    [SerializeField] private VisualElement m_GameOverPanel;
-    [SerializeField] private Label m_GameOverMessage;
+    private VisualElement m_GameOverPanel;
+    private Label m_GameOverMessage;
+    [SerializeField] private int m_CurrentLevel;
+    [SerializeField] public int m_FoodAmount;
+    private Label m_FoodLabel;
+    
     private void Awake()
    {
        if (Instance != null)
@@ -29,8 +32,11 @@ public class GameManager : MonoBehaviour
 
         turnManager = new TurnManager();
 
-        m_GameOverPanel = UIDoc.rootVisualElement.Q<VisualElement>("GameOverPanel");
-        m_GameOverMessage = m_GameOverPanel.Q<Label>("GameOverMessage");
+        var root = uiDocument.rootVisualElement;
+
+        m_GameOverPanel = root.Q<VisualElement>("GameOverPanel");
+        m_GameOverMessage = root.Q<Label>("GameOverMessage");
+        m_FoodLabel = root.Q<Label>("FoodLabel");
 
         StartNewGame();
     }
@@ -39,13 +45,14 @@ public class GameManager : MonoBehaviour
     {
         m_GameOverPanel.style.visibility = Visibility.Hidden;
         
+        turnManager.m_TurnCount = 1;
         m_CurrentLevel = 1;
-        m_FoodAmount = 20;
+        m_FoodAmount = 10;
         m_FoodLabel.text = "Food : " + m_FoodAmount;
 
         if (playerController != null && boardManager != null)
         {   
-            boardManager.Clean();
+            //boardManager.Clean();
             boardManager.Init();
 
             playerController.Init();
@@ -67,7 +74,7 @@ public class GameManager : MonoBehaviour
     {   
         playerController.GameOver();
         m_GameOverPanel.style.visibility = Visibility.Visible;
-        m_GameOverMessage.text = "Game Over!\n\nYou traveled through " + m_CurrentLevel + " levels";
+        m_GameOverMessage.text = "Game Over!\n\nYou traveled through " + m_CurrentLevel + " levels\n\nPress Enter to play again!";
     }
     }
 }

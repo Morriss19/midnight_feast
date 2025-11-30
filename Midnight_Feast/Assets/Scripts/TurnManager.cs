@@ -2,7 +2,7 @@ using UnityEngine;
 public class TurnManager
 {
     public event System.Action OnTick;
-    private int m_TurnCount;
+    public int m_TurnCount;
 
     public TurnManager()
     {

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class ExitCellObject : MonoBehaviour
+public class ExitCellObject : CellObject
 {
-    public Tile EndTile;
+   /* public Tile EndTile;
 
     public override void Init(Vector2Int coord)
     {
@@ -26,5 +26,5 @@ public class ExitCellObject : MonoBehaviour
     void Update()
     {
         
-    }
+    } */
 }

@@ -58,13 +58,13 @@ public class PlayerController : MonoBehaviour
         // Update camera bounds every frame (in case camera moves)
         CalculateCameraBounds();
 
-        if (m_IsGameOver) // Checks for game over
+        if (m_IsGameOver) // Checks for game over and allows restart with pressing enter
         {
             if (Keyboard.current.enterKey.wasPressedThisFrame)
             {
                 GameManager.Instance.StartNewGame();
             }
-            
+
             return;
         }
 
