@@ -119,6 +119,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &159594193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159594195}
+  - component: {fileID: 159594194}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &159594194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159594193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aeecafb8e20f4f958c437c87660562a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  boardManager: {fileID: 916485519}
+  playerController: {fileID: 244304045}
+  playerStartCell: {x: 1, y: 1}
+  m_Health: 200
+--- !u!4 &159594195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159594193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.41065, y: -0.78022, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &244304043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a6a5ecc5023114a928f5a033768445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  moveSpeed: 5
+  mainCamera: {fileID: 338922138}
 --- !u!1 &338922136
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +457,7 @@ MonoBehaviour:
   - {fileID: -3554167917184997724, guid: 6b9f814a01b8dc44f954985e4d59f341, type: 3}
   - {fileID: -3955679186030170315, guid: 6b9f814a01b8dc44f954985e4d59f341, type: 3}
   - {fileID: 8465883660682364911, guid: 6b9f814a01b8dc44f954985e4d59f341, type: 3}
-  Player: {fileID: 0}
+  Player: {fileID: 244304045}
 --- !u!1 &1858944419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,3 +2473,4 @@ SceneRoots:
   - {fileID: 338922139}
   - {fileID: 916485518}
   - {fileID: 244304043}
+  - {fileID: 159594195}
