@@ -10,10 +10,16 @@ public class PlayerController : MonoBehaviour
     private Vector2Int m_CellPosition;
     private Vector3 m_TargetPosition;
     private bool m_IsMoving = false;
+
+    private bool m_IsGameOver;
     
     private Vector2 minBounds;
     private Vector2 maxBounds;
     
+    public void Init()
+    {
+        m_IsGameOver = false;
+    }
     public void Spawn(BoardManager boardManager, Vector2Int cell)
     {
         m_Board = boardManager;
@@ -51,6 +57,16 @@ public class PlayerController : MonoBehaviour
 
         // Update camera bounds every frame (in case camera moves)
         CalculateCameraBounds();
+
+        if (m_IsGameOver) // Checks for game over
+        {
+            if (Keyboard.current.enterKey.wasPressedThisFrame)
+            {
+                GameManager.Instance.StartNewGame();
+            }
+            
+            return;
+        }
 
         if (m_IsMoving)
         {   
@@ -131,5 +147,10 @@ public class PlayerController : MonoBehaviour
     public bool IsMoving()
     {
         return m_IsMoving;
+    }
+
+    public void GameOver()
+    {
+        m_IsGameOver = true;
     }
 }
