@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TurnManager turnManager {get; private set;}
     [SerializeField] private Vector2Int playerStartCell = new Vector2Int(1, 1);
 
+    [SerializeField] private int m_Health = 200;
     private void Awake()
    {
        if (Instance != null)
