@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector2Int playerStartCell = new Vector2Int(1, 1);
 
     [SerializeField] private int m_FoodAmount = 200;
+    [SerializeField] public UIDocument UIDoc;
+    [SerializeField] private Label m_FoodLabel;
+
     private void Awake()
    {
        if (Instance != null)
@@ -24,6 +28,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager Start() called");
         
+        m_FoodLabel = UIDoc.rootVisualElement.Q<Label>("FoodLabel");
+        m_FoodLabel.text = "Food : " + m_FoodAmount;
+
         if (playerController != null && boardManager != null)
         {   
             turnManager = new TurnManager();
@@ -43,6 +50,6 @@ public class GameManager : MonoBehaviour
     void OnTurnHappen()
     {
         m_FoodAmount -= 1;
-        Debug.Log("Current amount of food : " + m_FoodAmount);
+        m_FoodLabel.text = "Food : " + m_FoodAmount;
     }
 }
