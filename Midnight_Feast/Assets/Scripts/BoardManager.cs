@@ -133,5 +133,24 @@ public class BoardManager : MonoBehaviour
         m_Tilemap.SetTile(new Vector3Int(cellIndex.x, cellIndex.y, 0), tile);
     }
 
-    
+    public void Clean()
+    {
+        if(m_BoardData == null)
+            return;
+
+        for (int y = 0; y < Height; ++y)
+        {
+            for (int x = 0; x < Width; ++x)
+            {
+                var cellData = m_BoardData[x, y];
+
+                if (cellData.ContainedObject != null)
+                {
+                    Destroy(cellData.ContainedObject.gameObject);
+                }
+
+                SetCellTile(new Vector2Int(x,y), null);
+            }
+        }
+    }
 }

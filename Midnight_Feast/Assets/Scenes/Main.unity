@@ -151,6 +151,7 @@ MonoBehaviour:
   boardManager: {fileID: 916485519}
   playerController: {fileID: 244304045}
   playerStartCell: {x: 1, y: 1}
+  m_CurrentLevel: 1
   m_FoodAmount: 200
   UIDoc: {fileID: 1714788720}
 --- !u!4 &159594195
@@ -455,6 +456,7 @@ MonoBehaviour:
   - {fileID: 4307292913212194104, guid: ca3888209b75a504987dbed612b766db, type: 3}
   WallTiles:
   - {fileID: -5709446742671161187, guid: ca3888209b75a504987dbed612b766db, type: 3}
+  ExitCellPrefab: {fileID: -2987727506922934452, guid: 237954db00d23f14aaa3104f86053fba, type: 3}
   Player: {fileID: 244304045}
   FoodPrefab: {fileID: 8560051153106260325, guid: 8601bb5f16ca8514a8a4d6206eaf2999, type: 3}
   foodCountMin: 5

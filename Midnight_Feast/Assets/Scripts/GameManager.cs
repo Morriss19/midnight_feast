@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TurnManager turnManager {get; private set;}
     [SerializeField] private Vector2Int playerStartCell = new Vector2Int(1, 1);
 
+    [SerializeField] private int m_CurrentLevel = 1;
     [SerializeField] private int m_FoodAmount = 200;
     [SerializeField] public UIDocument UIDoc;
     [SerializeField] private Label m_FoodLabel;
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("GameManager: Missing references! BoardManager: " + (boardManager != null) + ", PlayerController: " + (playerController != null));
         }
+
+        NewLevel();
     }
 
     void OnTurnHappen()
@@ -57,5 +60,14 @@ public class GameManager : MonoBehaviour
         m_FoodAmount += amount;
         Debug.Log("Current Food : " + m_FoodAmount);
         m_FoodLabel.text = "Food : " + m_FoodAmount;
+    }
+
+    public void NewLevel()
+    {
+        boardManager.Clean();
+        boardManager.Init();
+        playerController.Spawn(boardManager, new Vector2Int(1,1));
+
+        m_CurrentLevel++;
     }
 }
