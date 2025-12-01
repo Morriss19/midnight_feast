@@ -14,6 +14,11 @@ public class CellObject : MonoBehaviour
     {
         
     }
+
+    public virtual bool PlayerWantsToEnter()
+    {
+        return true;
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
