@@ -96,16 +96,22 @@ public class PlayerController : MonoBehaviour
     {
         Vector2Int targetCell = m_CellPosition + direction;
 
-        // Check if the target cell is passable
-        if (m_Board.IsCellPassable(targetCell))
+        BoardManager.CellData cellData = m_Board.GetCellData(targetCell);
+
+        if (cellData != null && cellData.Passable)
         {
             m_CellPosition = targetCell;
-            m_TargetPosition = m_Board.CellToWorld(targetCell);
+            m_TargetPosition = m_Board.CellToWorld(targetCell); 
             m_IsMoving = true;
+
+            if (cellData.ContainedObject != null)
+            {
+                cellData.ContainedObject.PlayerEntered();
+            } 
         }
         else
         {
-            Debug.Log("Can't move through walls!");
+            Debug.Log("Can't Move through Walls") ;
         }
     }
 
