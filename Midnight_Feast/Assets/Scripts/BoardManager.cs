@@ -6,6 +6,7 @@ public class BoardManager : MonoBehaviour
     public class CellData
     {
         public bool Passable; // Decides if tiles can be passed through or not
+        public CellObject ContainedObject;
     }
 
     private CellData[,] m_BoardData;

@@ -25,12 +25,12 @@ public class GameManager : MonoBehaviour
        }
       
        Instance = this;
+
+       turnManager = new TurnManager();
    }
     void Start()
     {
         Debug.Log("GameManager Start() called");
-
-        turnManager = new TurnManager();
 
         var root = uiDocument.rootVisualElement;
 

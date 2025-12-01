@@ -8,12 +8,12 @@ public class Enemy : CellObject
 
    private void Awake()
    {
-      GameManager.Instance.TurnManager.OnTick += TurnHappened;
+      GameManager.Instance.turnManager.OnTick += TurnHappened;
    }
 
    private void OnDestroy()
    {
-       GameManager.Instance.TurnManager.OnTick -= TurnHappened;
+       GameManager.Instance.turnManager.OnTick -= TurnHappened;
    }
 
    public override void Init(Vector2Int coord)
@@ -36,7 +36,7 @@ public class Enemy : CellObject
 
    bool MoveTo(Vector2Int coord)
    {
-       var board = GameManager.Instance.BoardManager;
+       var board = GameManager.Instance.boardManager;
        var targetCell =  board.GetCellData(coord);
 
       if (targetCell == null
@@ -61,7 +61,7 @@ public class Enemy : CellObject
    void TurnHappened()
    {
       //We added a public property that return the player current cell!
-      var playerCell = GameManager.Instance.PlayerController.Cell;
+      var playerCell = GameManager.Instance.playerController.Cell;
 
       int xDist = playerCell.x - m_Cell.x;
       int yDist = playerCell.y - m_Cell.y;
