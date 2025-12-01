@@ -121,6 +121,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CheckCellObject()
+    {
+        CheckCellObject cellObject = m_Board.GetCellObject(m_CellPosition);
+        
+        if (cellObject != null)
+        {
+            cellObject.PlayerEntered(); 
+        }
+    }
     public Vector2Int GetCellPosition()
     {
         return m_CellPosition;

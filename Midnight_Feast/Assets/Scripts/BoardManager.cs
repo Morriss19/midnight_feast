@@ -96,7 +96,16 @@ public class BoardManager : MonoBehaviour
         m_EmptyCellsList.Remove(new Vector2Int(1, 1));
         GenerateFood();
     }
-
+    public CellObject GetCellObject(Vector2Int cellIndex)
+    {
+    // Check if cell is within bounds
+        if (cellIndex.x < 0 || cellIndex.x >= Width || cellIndex.y < 0 || cellIndex.y >= Height)
+        {
+            return null;
+        }
+    
+        return m_BoardData[cellIndex.x, cellIndex.y].ContainedObject;
+    }
     
     // Update is called once per frame
     void Update()
