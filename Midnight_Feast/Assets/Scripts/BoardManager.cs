@@ -29,17 +29,24 @@ public class BoardManager : MonoBehaviour
         return m_Grid.GetCellCenterWorld((Vector3Int)cellIndex);
     }
     public bool IsCellPassable(Vector2Int cellIndex)
-{
+    {
     // Check if cell is within bounds
     if (cellIndex.x < 0 || cellIndex.x >= Width || cellIndex.y < 0 || cellIndex.y >= Height)
     {
         return false;
-    }
-    
+    }    
     // Check if cell is passable
     return m_BoardData[cellIndex.x, cellIndex.y].Passable;
-}
-
+    }
+    public CellData GetCellData(Vector2Int cellIndex)
+    {
+        
+        if (cellIndex.x < 0 || cellIndex.x >= Width || cellIndex.y < 0 || cellIndex.y >= Height)
+        {
+            return null;
+        }
+        return m_BoardData[cellIndex.x, cellIndex.y];
+    }
     void GenerateFood()
     {
         int foodCount = Random.Range(foodCountMin, foodCountMax);
