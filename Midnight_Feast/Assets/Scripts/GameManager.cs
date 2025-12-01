@@ -13,9 +13,8 @@ public class GameManager : MonoBehaviour
 
     private VisualElement m_GameOverPanel;
     private Label m_GameOverMessage;
-    [SerializeField] private int m_CurrentLevel;
-    [SerializeField] public int m_FoodAmount;
-    private Label m_FoodLabel;
+    
+    // private Label m_FoodLabel;
     
     [SerializeField] private int m_CurrentLevel = 1;
     [SerializeField] private int m_FoodAmount = 200;
@@ -32,7 +31,7 @@ public class GameManager : MonoBehaviour
       
        Instance = this;
 
-       turnManager = new TurnManager();
+       // turnManager = new TurnManager();
    }
     void Start()
     {
@@ -42,7 +41,7 @@ public class GameManager : MonoBehaviour
 
         m_GameOverPanel = root.Q<VisualElement>("GameOverPanel");
         m_GameOverMessage = root.Q<Label>("GameOverMessage");
-        m_FoodLabel = root.Q<Label>("FoodLabel");
+        // m_FoodLabel = root.Q<Label>("FoodLabel");
 
         StartNewGame();
     }
@@ -83,6 +82,13 @@ public class GameManager : MonoBehaviour
         m_FoodAmount += amount;
         Debug.Log("Current Food : " + m_FoodAmount);
         m_FoodLabel.text = "Food : " + m_FoodAmount;
+
+         if (m_FoodAmount <= 0)
+        {   
+            playerController.GameOver();
+            m_GameOverPanel.style.visibility = Visibility.Visible;
+            m_GameOverMessage.text = "Game Over!\n\nYou traveled through " + m_CurrentLevel + " levels\n\nPress Enter to play again!";
+        }
     }
 
     public void NewLevel()
@@ -92,18 +98,5 @@ public class GameManager : MonoBehaviour
         playerController.Spawn(boardManager, new Vector2Int(1,1));
 
         m_CurrentLevel++;
-    }
-
-    public void ChangeFood(int amount)
-    {
-    m_FoodAmount += amount;
-    m_FoodLabel.text = "Food : " + m_FoodAmount;
-
-    if (m_FoodAmount <= 0)
-    {   
-        playerController.GameOver();
-        m_GameOverPanel.style.visibility = Visibility.Visible;
-        m_GameOverMessage.text = "Game Over!\n\nYou traveled through " + m_CurrentLevel + " levels\n\nPress Enter to play again!";
-    }
     }
 }
