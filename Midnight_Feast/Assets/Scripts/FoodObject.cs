@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class FoodObject : CellObject
 {
-    [SerializeField] private int foodValue = 10;
     public override void PlayerEntered()
     {
-        Debug.Log("Food Collected");
+        Destroy(gameObject);
 
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.ChangeFood(foodValue);
-        }
-        Destroy(/*Let me get the food object*/); 
+        Debug.Log("Food increased");
     }
     
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
