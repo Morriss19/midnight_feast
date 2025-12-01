@@ -61,7 +61,7 @@ public class Enemy : CellObject
    void TurnHappened()
    {
       //We added a public property that return the player current cell!
-      var playerCell = GameManager.Instance.playerController.Cell;
+      var playerCell = GameManager.Instance.playerController.m_CellPosition;
 
       int xDist = playerCell.x - m_Cell.x;
       int yDist = playerCell.y - m_Cell.y;
@@ -73,7 +73,7 @@ public class Enemy : CellObject
           || (yDist == 0 && absXDist == 1))
       {
           //we are adjacent to the player, attack!
-          GameManager.Instance.ChangeFood(3);
+          GameManager.Instance.ChangeFood(25);
       }
       else
       {

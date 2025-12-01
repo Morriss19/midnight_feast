@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     
     private BoardManager m_Board;
-    private Vector2Int m_CellPosition;
+    public Vector2Int m_CellPosition;
     private Vector3 m_TargetPosition;
     private bool m_IsMoving = false;
 

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public BoardManager boardManager;
     [SerializeField] public PlayerController playerController;
 
-    [SerializeField] private UIDocument uiDocument;
+    // [SerializeField] private UIDocument uiDocument;
     [SerializeField] public TurnManager turnManager {get; private set;}
     [SerializeField] private Vector2Int playerStartCell = new Vector2Int(1, 1);
 
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager Start() called");
 
-        var root = uiDocument.rootVisualElement;
+        var root = UIDoc.rootVisualElement;
 
         m_GameOverPanel = root.Q<VisualElement>("GameOverPanel");
         m_GameOverMessage = root.Q<Label>("GameOverMessage");
