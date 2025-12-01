@@ -104,6 +104,8 @@ public class PlayerController : MonoBehaviour
             m_TargetPosition = m_Board.CellToWorld(targetCell); 
             m_IsMoving = true;
 
+            GameManager.Instance.turnManager.Tick();
+
             if (cellData.ContainedObject != null)
             {
                 cellData.ContainedObject.PlayerEntered();

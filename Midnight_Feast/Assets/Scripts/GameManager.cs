@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void ChangeFood(int amount)
     {
         m_FoodAmount += amount;
+        Debug.Log("Current Food : " + m_FoodAmount);
         m_FoodLabel.text = "Food : " + m_FoodAmount;
     }
 }

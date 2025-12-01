@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,3 +81,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd679b9275703994a81c197676c9b01a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodObject
+  AmountGranted: 10

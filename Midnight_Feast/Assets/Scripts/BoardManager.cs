@@ -19,6 +19,7 @@ public class BoardManager : MonoBehaviour
     public int Height;
     public Tile[] GroundTiles;
     public Tile[] WallTiles;
+    public ExitCellObject ExitCellPrefab;
     public PlayerController Player;
     public FoodObject FoodPrefab;
     public int foodCountMin;
@@ -101,6 +102,11 @@ public class BoardManager : MonoBehaviour
 
         // remove the starting point of player
         m_EmptyCellsList.Remove(new Vector2Int(1, 1));
+        
+        // Adds exit stairs
+        Vector2Int endCoord = new Vector2Int(Width - 2, Height -2);
+        AddObject(Instantiate(ExitCellPrefab), endCoord);
+        m_EmptyCellsList.Remove(endCoord);
         GenerateFood();
     }
     public CellObject GetCellObject(Vector2Int cellIndex)
@@ -113,10 +119,19 @@ public class BoardManager : MonoBehaviour
     
         return m_BoardData[cellIndex.x, cellIndex.y].ContainedObject;
     }
-    
-    // Update is called once per frame
-    void Update()
+
+    void AddObject(CellObject obj, Vector2Int coord)
     {
-        
+    CellData data = m_BoardData[coord.x, coord.y];
+    obj.transform.position = CellToWorld(coord);
+    data.ContainedObject = obj;
+    obj.Init(coord);
     }
+    
+    public void SetCellTile(Vector2Int cellIndex, Tile tile)
+    {
+        m_Tilemap.SetTile(new Vector3Int(cellIndex.x, cellIndex.y, 0), tile);
+    }
+
+    
 }
