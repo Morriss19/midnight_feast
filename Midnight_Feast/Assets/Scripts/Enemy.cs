@@ -123,4 +123,23 @@ public class Enemy : CellObject
       //player below
       return MoveTo(m_Cell + Vector2Int.down);
    }
+
+    public void TakeDamage(int damage)
+    {
+        m_CurrentHealth -= damage;
+        
+        Debug.Log($"Enemy took {damage} damage! Health: {m_CurrentHealth}/{Health}");
+        
+        if (m_CurrentHealth <= 0)
+        {
+            var board = GameManager.Instance.boardManager;
+            var currentCell = board.GetCellData(m_Cell);
+            
+            if (currentCell != null)
+            {
+                currentCell.ContainedObject = null; 
+            }
+            Destroy(gameObject); 
+        }
+    }
 }

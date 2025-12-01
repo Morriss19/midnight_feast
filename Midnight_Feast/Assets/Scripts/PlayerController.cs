@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Can't Move through Walls") ;
         }
     }
-
+    
     private void MoveTowardsTarget()
     {
         transform.position = Vector3.MoveTowards(transform.position, m_TargetPosition, moveSpeed * Time.deltaTime);
