@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         m_CellPosition = cell;
         m_TargetPosition = m_Board.CellToWorld(cell);
         transform.position = m_TargetPosition;
-
+        
         // Get camera if not assigned
         if (mainCamera == null)
         {
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (m_IsMoving)
-        {   
+        {
             MoveTowardsTarget();
         }
         else
@@ -112,16 +112,24 @@ public class PlayerController : MonoBehaviour
     {
         Vector2Int targetCell = m_CellPosition + direction;
 
-        // Check if the target cell is passable
-        if (m_Board.IsCellPassable(targetCell))
+        BoardManager.CellData cellData = m_Board.GetCellData(targetCell);
+
+        if (cellData != null && cellData.Passable)
         {
             m_CellPosition = targetCell;
-            m_TargetPosition = m_Board.CellToWorld(targetCell);
+            m_TargetPosition = m_Board.CellToWorld(targetCell); 
             m_IsMoving = true;
+
+            GameManager.Instance.turnManager.Tick();
+
+            if (cellData.ContainedObject != null)
+            {
+                cellData.ContainedObject.PlayerEntered();
+            } 
         }
         else
         {
-            Debug.Log("Can't move through walls!");
+            Debug.Log("Can't Move through Walls") ;
         }
     }
 
@@ -134,8 +142,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = m_TargetPosition;
             m_IsMoving = false;
-
-            GameManager.Instance.turnManager.Tick();
         }
     }
 

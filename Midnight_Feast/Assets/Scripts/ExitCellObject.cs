@@ -3,28 +3,16 @@ using UnityEngine.Tilemaps;
 
 public class ExitCellObject : CellObject
 {
-   /* public Tile EndTile;
-
-    public override void Init(Vector2Int coord)
-    {
-       base.Init(coord);
-       GameManager.Instance.BoardManager.SetCellTile(coord, EndTile);
-    }
-
-    public override void PlayerEntered()
-    {
-       Debug.Log("Reached the exit cell");
-    }
+    public Tile EndTile;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public override void Init(Vector2Int coord)
+   {
+       base.Init(coord);
+       GameManager.Instance.boardManager.SetCellTile(coord, EndTile);
+   }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    } */
+   public override void PlayerEntered()
+   {
+       GameManager.Instance.NewLevel();
+   }
 }

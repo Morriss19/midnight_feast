@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4797099022765175973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2253911629886400664, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_Name
+      value: SmallFood
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.965
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8560051153106260325}
+  m_SourcePrefab: {fileID: -8435245712485981826, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+--- !u!1 &2461999453200278477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: a1fbc433d94a0f94f96cc7d1fe2c2ca4, type: 3}
+  m_PrefabInstance: {fileID: 4797099022765175973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8560051153106260325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461999453200278477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd679b9275703994a81c197676c9b01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodObject
+  AmountGranted: 10

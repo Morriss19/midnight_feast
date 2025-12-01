@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {get; private set;}
@@ -16,6 +17,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int m_FoodAmount;
     private Label m_FoodLabel;
     
+    [SerializeField] private int m_CurrentLevel = 1;
+    [SerializeField] private int m_FoodAmount = 200;
+    [SerializeField] public UIDocument UIDoc;
+    [SerializeField] private Label m_FoodLabel;
+
     private void Awake()
    {
        if (Instance != null)
@@ -45,14 +51,14 @@ public class GameManager : MonoBehaviour
     {
         m_GameOverPanel.style.visibility = Visibility.Hidden;
         
-        turnManager.m_TurnCount = 1;
-        m_CurrentLevel = 1;
-        m_FoodAmount = 10;
+        m_FoodLabel = UIDoc.rootVisualElement.Q<Label>("FoodLabel");
         m_FoodLabel.text = "Food : " + m_FoodAmount;
 
         if (playerController != null && boardManager != null)
         {   
-            //boardManager.Clean();
+            turnManager = new TurnManager();
+            turnManager.OnTick += OnTurnHappen;
+
             boardManager.Init();
 
             playerController.Init();
@@ -63,6 +69,29 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("GameManager: Missing references! BoardManager: " + (boardManager != null) + ", PlayerController: " + (playerController != null));
         }
+
+        NewLevel();
+    }
+
+    void OnTurnHappen()
+    {
+       ChangeFood(-1);
+    }
+
+    public void ChangeFood(int amount)
+    {
+        m_FoodAmount += amount;
+        Debug.Log("Current Food : " + m_FoodAmount);
+        m_FoodLabel.text = "Food : " + m_FoodAmount;
+    }
+
+    public void NewLevel()
+    {
+        boardManager.Clean();
+        boardManager.Init();
+        playerController.Spawn(boardManager, new Vector2Int(1,1));
+
+        m_CurrentLevel++;
     }
 
     public void ChangeFood(int amount)
