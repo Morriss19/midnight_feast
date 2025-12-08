@@ -15,15 +15,15 @@ public class BoardManager : MonoBehaviour
     private Tilemap m_Tilemap;
     private Grid m_Grid;
 
-    public int Width;
-    public int Height;
+    public int Width = 8;
+    public int Height = 8;
     public Tile[] GroundTiles;
     public Tile[] WallTiles;
     public ExitCellObject ExitCellPrefab;
     public PlayerController Player;
     public FoodObject FoodPrefab;
-    public int foodCountMin;
-    public int foodCountMax;
+    public int foodCountMin = 5;
+    public int foodCountMax = 15;
     
     public Vector3 CellToWorld(Vector2Int cellIndex)
     {

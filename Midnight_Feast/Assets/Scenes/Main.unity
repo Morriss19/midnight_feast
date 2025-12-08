@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 159594193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.41065, y: -0.78022, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -181,6 +181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Feast_Raccoon
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: 0ad0fdcf5916b664b95a74a185edf05e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9d52aaf5e9e4c384f9015afaa52661fe, type: 2}
     - target: {fileID: 3626916397498700004, guid: 0ad0fdcf5916b664b95a74a185edf05e, type: 3}
       propertyPath: m_SortingOrder
       value: 10
@@ -478,7 +482,7 @@ MonoBehaviour:
   Player: {fileID: 244304045}
   FoodPrefab: {fileID: 8560051153106260325, guid: 8601bb5f16ca8514a8a4d6206eaf2999, type: 3}
   foodCountMin: 5
-  foodCountMax: 17
+  foodCountMax: 15
 --- !u!1 &1714788719
 GameObject:
   m_ObjectHideFlags: 0
