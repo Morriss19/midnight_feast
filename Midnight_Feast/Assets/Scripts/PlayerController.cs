@@ -12,9 +12,16 @@ public class PlayerController : MonoBehaviour
     private bool m_IsMoving = false;
 
     private bool m_IsGameOver;
+    private Animator m_Animator;
     
     private Vector2 minBounds;
     private Vector2 maxBounds;
+    private float animationCooldown = 0f;
+    
+    private void Awake()
+    {
+        m_Animator = GetComponent<Animator>();
+    }
     
     public void Init()
     {
@@ -68,6 +75,16 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        if (!m_IsMoving && animationCooldown > 0)
+        {
+            animationCooldown -= Time.deltaTime;
+
+            if (animationCooldown <= 0 && m_Animator != null)
+            {
+                m_Animator.SetBool("Walk", false);
+            }
+        }
+
         if (m_IsMoving)
         {
             MoveTowardsTarget();
@@ -104,6 +121,7 @@ public class PlayerController : MonoBehaviour
 
         if (direction != Vector2Int.zero)
         {
+            RotatePlayer(direction);
             TryMove(direction);
         }
     }
@@ -131,6 +149,25 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Can't Move through Walls") ;
         }
+
+        if (m_Animator != null) 
+            m_Animator.SetBool("Walk", m_IsMoving);
+    }
+
+    private void RotatePlayer(Vector2Int direction)
+    {
+        if (m_Animator == null) return;
+
+        if (direction == Vector2Int.up)
+            m_Animator.SetInteger("Rotate", 3);
+        else if (direction == Vector2Int.down)
+            m_Animator.SetInteger("Rotate", 1);
+        else if (direction == Vector2Int.left)
+            m_Animator.SetInteger("Rotate", 2);
+        else if (direction == Vector2Int.right)
+            m_Animator.SetInteger("Rotate", 4);
+
+        Debug.Log("Rotate set to: " + direction);
     }
     
     private void MoveTowardsTarget()
@@ -142,6 +179,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = m_TargetPosition;
             m_IsMoving = false;
+            animationCooldown = 0.4f;
         }
     }
 
